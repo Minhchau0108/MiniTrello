@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link
+  rel="stylesheet"
+  href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+  crossorigin="anonymous"/>
+  <link
+  href="https://fonts.googleapis.com/css?family=Lato|Roboto"
+  rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <header>
+    <nav id="navbar">
+      <div class="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <input id="search" placeholder="Search..." autocomplete="off" />
+      <h1 id="app-title">Mini Trello</h1>
+    </nav>
+  </header>
+
+  <main id="app">
+    <section id="board">
+
+      <div id="infos">
+        <div class="logo"><img src="https://cdn.itviec.com/employers/coderschool/logo/social/8p67H9qvrjNV5FNxB5ZEuPoM/Logo-full@2x-1024x800.png" alt="CS Logo" /></div>
+        <div id="infos-content">
+          <div class="infos-title">FTW Bootcamp</div>
+          <div class="infos-description">From Cheetah with love</div>
+        </div>
+      </div>
+
+      <!--ADD-TASK-FORM-->
+      <div id="add-task-form">
+        <input id="task-value" placeholder="Add task" />
+        <button id="add-task">+</button>
+      </div>
+    </section>
+
+    <section id="columns">
+
+      <div class="column dropzone">
+        <h3 class="column-title">Backlog</h3>
+        <ul class="tasks" id="tasks-added">
+
+          <!--TASK-->
+          <!-- <li class="task fill" draggable="true">
+            <div class="task-content">Write the weekly note</div>
+            <div class="trash">&times;</div>
+          </li> -->
+        </ul>
+      </div>
+
+      <div class="column dropzone">
+        <h3 class="column-title" id="inProgress">In Progress</h3>
+        <ul class="tasks"></ul>
+      </div>
+
+      <div class="column dropzone">
+        <h3 class="column-title" id="review">Review</h3>
+        <ul class="tasks"></ul>
+      </div>
+
+      <div class="column dropzone">
+        <h3 class="column-title" id="done">Done</h3>
+        <ul class="tasks"></ul>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
