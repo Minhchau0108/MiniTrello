@@ -173,7 +173,7 @@ header {
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 4px;
-  min-height: 80px;
+  min-height: 150px;
   width: 288px;
 }
 .task:first-child {
@@ -194,6 +194,11 @@ header {
   box-shadow: 0px 4px 20px rgba(52, 152, 219, 0.4);
   border-radius: 2px;
 }
+.task .form-edit{
+  height: 100px;
+  width: 200px;
+  margin-left: 15px;
+}
 .task .trash {
   position: absolute;
   top: 5px;
@@ -211,6 +216,36 @@ header {
   font-size: 20px;
   color: #54585a;
 }
+.task .inProgress{
+
+    position: absolute;
+    top: 60px;
+    right: 6px;
+    font-family: "Lato";
+    font-size: 12px;
+    color: #54585a;
+  }
+.task .review{
+  position: absolute;
+  top: 90px;
+  right: 6px;
+  font-family: "Lato";
+  font-size: 12px;
+  color: #54585a;
+}
+
+.task .done{
+  position: absolute;
+  top: 120px;
+  right: 6px;
+  font-family: "Lato";
+  font-size: 12px;
+  color: #54585a;
+}
+.task .edit:hover,
+.task .inProgress:hover,
+.task .review:hover,
+.task .done:hover,
 .task .trash:hover {
   color: #e74c3c;
   cursor: pointer;

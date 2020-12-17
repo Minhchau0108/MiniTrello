@@ -59,26 +59,47 @@ function addTask(taskValue) {
   // add Text
   taskContent.innerText = taskValue;
 
-  // create div
+  // TRASH DIV
   var trash = document.createElement("div");
-  // add class CSS
   trash.classList.add("trash");
-  // add inner HTML cho the div
-  trash.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-  // add event click = remove task
+  trash.innerHTML = `<i class="fas fa-trash"></i>`;
   trash.addEventListener("click", removeTask);
 
-  //EDIT TASK
+  //EDIT DIV
   var edit = document.createElement("div");
   edit.classList.add("edit");
   edit.innerHTML = `<i class="fas fa-edit"></i>`;
   edit.addEventListener("click", editTask);
 
+  // INPROGRESS BUTTON
+  let inProgress = document.createElement("button");
+  inProgress.classList.add("inProgress");
+  inProgress.innerHTML = "In Progress";
+  inProgress.addEventListener("click", moveInProgress);
+
+  // REVIEW BUTTON
+  let review = document.createElement("button");
+  review.classList.add("review");
+  review.innerHTML = "Review";
+  review.addEventListener("click", moveReview);
+
+  // DONE BUTTON
+  let done = document.createElement("button");
+  done.classList.add("done");
+  done.innerHTML = "Done";
+  done.addEventListener("click", moveDone);
+
+
+
   // add div taskContent vào the li
   task.appendChild(taskContent);
-  // add div trash vao the li
+  // add icon trash vao the li
   task.appendChild(trash);
   task.appendChild(edit);
+  task.appendChild(inProgress);
+  task.appendChild(review);
+  task.appendChild(done);
+  console.log(task);
 
   // lay the co id = "tasks-added" (the ul)
   var tasks = document.getElementById("tasks-added");
@@ -89,25 +110,45 @@ function addTask(taskValue) {
 //Event represents the remove button = the div 
 function removeTask(event) {
   // Access the <ul> list by moving 2 levels up
-  var tasks = event.target.parentNode.parentNode;
+  var tasks = event.target.parentNode.parentNode.parentNode;
   // Access the <li> element which is the direct parent
-  var task = event.target.parentNode;
+  var task = event.target.parentNode.parentNode;
   tasks.removeChild(task);
 }
 
 //Function EditTask
 function editTask(event) {
-  // Access the <li> element which is the direct parent
-  var task = event.target.parentNode;
-  var input = document.createElement('input');
-  task.childNodes[0].innerHTML = input;
-  // task.appendChild(input);
-  input.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-     event.preventDefault();
-     input.remove();
-    }
-  });
+  let task = event.target.parentNode.parentNode;
+  console.log(event.target); // icon
+  console.log(task.childNodes);
+  let taskEdit = task.childNodes[0];
+
+ 
+  let form = document.createElement("form");
+  form.classList.add("form-edit");
+  form.addEventListener("submit", renewTask);
+
+  let input = document.createElement("input");
+  input.setAttribute("autofocus", "true");
+  input.value = taskEdit.childNodes[0].nodeValue;
+
+  let editButton = document.createElement("button");
+  editButton.innerHTML = "Edit";
+
+  form.appendChild(input);
+  form.appendChild(editButton);
+  task.appendChild(form);
+  event.target.style.visibility = "hidden";
+
+  function renewTask(event){
+    event.preventDefault();
+    taskEdit.childNodes[0].nodeValue = input.value;
+    console.log(event.target);
+    let myEditBtn = event.target.parentNode.childNodes[2].childNodes[0];
+    console.log(myEditBtn);
+    myEditBtn.style.visibility = "visible";
+    event.target.remove();
+  }
 }
 
 
@@ -182,3 +223,20 @@ for (let index = 0; index < dropzones.length; index++) {
   </li> -->
 </ul>
 </div> */
+function moveInProgress(event){
+  //add li into column Progress
+  let task = event.target.parentNode;
+  let ul = document.getElementById("tasks-inProgress");
+  ul.appendChild(task);
+}
+function moveDone(event){
+  //add li into column Done
+  let task = event.target.parentNode;
+  let ul = document.getElementById("tasks-Done");
+  ul.appendChild(task);
+}
+function moveReview(event){
+  let task = event.target.parentNode;
+  let ul = document.getElementById("tasks-Review");
+  ul.appendChild(task);
+}
